@@ -27,13 +27,36 @@ function handleFormSubmit(event){
     editBtn.appendChild(document.createTextNode("Edit"))
     userItem.appendChild(editBtn)
     userList.appendChild(userItem)
+    // delete
     delBtn.addEventListener("click",function(){
         userList.removeChild(userItem)
         localStorage.removeItem(obj.username)
+        axios
+        .delete(
+          `https://crudcrud.com/api/5613b7d227f4483f9725dafd8cb6ec52/appointmentData/${obj._id}`
+        )
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  
     })
     editBtn.addEventListener("click",function(){
     userList.removeChild(userItem)
     localStorage.removeItem(obj.username)
+    // edit 
+    axios
+        .delete(
+          `https://crudcrud.com/api/5613b7d227f4483f9725dafd8cb6ec52/appointmentData/${obj._id}`
+        )
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
     document.getElementById("username").value=obj.username
     document.getElementById("email").value=obj.email
